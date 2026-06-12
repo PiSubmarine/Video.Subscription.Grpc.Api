@@ -5,13 +5,15 @@ package pisubmarine.video.subscription.grpc.api;
 message ErrorPayload
 {
   int32 error_condition = 1;
+  string error_category = 2;
+  int32 error_code = 3;
 }
 
 message Empty
 {
 }
 
-message RtpEndpoint
+message Endpoint
 {
   string host = 1;
   uint32 port = 2;
@@ -20,7 +22,7 @@ message RtpEndpoint
 message SubscribeRequest
 {
   string lease_id = 1;
-  RtpEndpoint rtp_endpoint = 2;
+  Endpoint endpoint = 2;
 }
 
 message UnsubscribeRequest

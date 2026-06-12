@@ -25,7 +25,7 @@ The first version intentionally supports:
 
 - unicast RTP
 - explicit lease id
-- explicit RTP host and port
+- explicit endpoint host and port
 
 It intentionally does not define:
 
@@ -33,3 +33,4 @@ It intentionally does not define:
 - codec negotiation
 - SDP exchange
 - stream profile or focus control
+- transport-specific endpoint implementation types
