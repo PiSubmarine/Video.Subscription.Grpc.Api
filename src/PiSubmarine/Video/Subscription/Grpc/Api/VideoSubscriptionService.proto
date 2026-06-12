@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package pisubmarine.video.subscription.grpc.api;
+
+message ErrorPayload
+{
+  int32 error_condition = 1;
+}
+
+message Empty
+{
+}
+
+message RtpEndpoint
+{
+  string host = 1;
+  uint32 port = 2;
+}
+
+message SubscribeRequest
+{
+  string lease_id = 1;
+  RtpEndpoint rtp_endpoint = 2;
+}
+
+message UnsubscribeRequest
+{
+  string lease_id = 1;
+}
+
+message VoidResult
+{
+  oneof value
+  {
+    Empty success = 1;
+    ErrorPayload error = 2;
+  }
+}
+
+service VideoSubscriptionService
+{
+  rpc Subscribe(SubscribeRequest) returns (VoidResult);
+  rpc Unsubscribe(UnsubscribeRequest) returns (VoidResult);
+}
